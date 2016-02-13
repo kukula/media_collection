@@ -19,8 +19,17 @@ html lang="en"
 
       .top-bar-right
         ul.menu
-          li
-            = link_to "Register", new_user_registration_path
+          - if user_signed_in?
+            li.menu-text
+              = "Signed in as #{current_user.email}"
+            li
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+
+          - else
+            li
+              = link_to "Register", new_user_registration_path
+            li
+              = link_to "Sign in", new_user_session_path
 
     .notice
       = notice
@@ -28,4 +37,6 @@ html lang="en"
     .alert
       = alert
 
-    = yield
+    .row
+      .large-12.columns
+        = yield
