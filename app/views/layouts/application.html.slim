@@ -31,12 +31,14 @@ html lang="en"
             li
               = link_to "Sign in", new_user_session_path
 
-    .notice
-      = notice
-
-    .alert
-      = alert
-
     .row
       .large-12.columns
+        - if notice
+          .notice.callout
+            = notice
+
+        - if alert
+          .alert.callout
+            = alert
+
         = yield
