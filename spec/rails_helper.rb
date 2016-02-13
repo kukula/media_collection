@@ -59,4 +59,17 @@ RSpec.configure do |config|
   config.after :each do
     Warden.test_reset!
   end
+  config.include Devise::TestHelpers, type: :controller
+  #
+  # DB cleaner
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
