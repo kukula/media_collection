@@ -1,5 +1,9 @@
 class MediaItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
+
+  def index
+    @media_items = MediaItem.all
+  end
 
   def create
     media_item = MediaItem.new(media_item_params)

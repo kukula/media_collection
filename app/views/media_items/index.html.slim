@@ -1,0 +1,7 @@
+- if user_signed_in?
+  = render 'form', media_item: MediaItem.new
+
+h2 Collection
+- @media_items.each do |item|
+  p
+   = link_to item.title, item.link
