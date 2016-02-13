@@ -12,6 +12,15 @@ html lang="en"
     = csrf_meta_tag
 
   body
+    .top-bar
+      .top-bar-left
+        ul.menu
+          li.menu-text Media collection
+
+      .top-bar-right
+        ul.menu
+          li
+            = link_to "Register", new_user_registration_path
 
     .notice
       = notice
