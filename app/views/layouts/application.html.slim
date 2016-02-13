@@ -4,7 +4,8 @@ html lang="en"
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? yield(:title) : "Media collection"
+    title
+      = content_for?(:title) ? yield(:title) : "Media collection"
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -12,4 +13,10 @@ html lang="en"
 
   body
 
-    == yield
+    .notice
+      = notice
+
+    .alert
+      = alert
+
+    = yield
